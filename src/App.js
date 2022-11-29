@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css';
 import { Countries } from './Components/Countries';
-import { CountrieInfo} from './Components/CountrieInfo';
+import CountrieInfo from './Components/CountrieInfo';
 import { Filter } from './Components/Filter';
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
 
   const Restult = ({isInFilter}) => {
     if(isInFilter.length===1){
-      const countrie = isInFilter[0];
+      const countrie = { ...isInFilter[0] }
       return(
       <CountrieInfo countrie={countrie} />
       )
@@ -35,7 +35,6 @@ function App() {
     else{
       return <Countries  isInFilter={isInFilter} />
     }    
-    
   }
 
   return (
