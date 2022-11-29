@@ -3,6 +3,7 @@ import axios from 'axios'
 import './App.css';
 import { Countries } from './Components/Countries';
 import { CountrieInfo} from './Components/CountrieInfo';
+import { Filter } from './Components/Filter';
 
 function App() {
   const [ countries, setCountries ] = useState([])
@@ -16,10 +17,14 @@ function App() {
       })
   }, [])
 
+  const handleChangeFilter = (event) => {
+    setFilter(event.target.value)
+  }
+  
   const isInFilter = countries.filter(function (countrie){
     return countrie.name.official.toUpperCase().includes(filter.toUpperCase())
   })
-  
+
   const Restult = ({isInFilter}) => {
     if(isInFilter.length===1){
       const countrie = isInFilter[0];
@@ -32,10 +37,10 @@ function App() {
     }    
     
   }
-  
+
   return (
     <div className="App">
-        <input value={filter} onChange={e => setFilter(e.target.value)} />
+        <Filter filter={filter} handleChangeFilter={handleChangeFilter}/>
       <div>
         <Restult isInFilter={isInFilter} />
       </div>
