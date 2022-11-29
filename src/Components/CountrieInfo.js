@@ -1,31 +1,24 @@
 export const CountrieInfo = ({countrie}) => {
-    console.log(countrie.name.official)
-    if(countrie !== undefined){
         return (
             <div>
                 <h2>{countrie.name.official}</h2>
-                <p>{countrie.capital}</p>
-                <p>{countrie.population}</p>
-                <Languages languages={countrie.languages}/>
+                <img src={countrie.flags.png} />
+                <p>Capital: {countrie.capital}</p>
+                <p>Population: {countrie.population}</p>
+                <p>Languages: </p>
+                <Languages languages={countrie}/>
             </div>
         )
-    }
-    else{
-        return <p>Undefined Countrie</p>
-    }
-    
 };
-
-const Language = (countrie) => {
-    return <ul>{countrie.languages}</ul>
-}
 
 const Languages = (countrie) => {
     return (
-        <li>
-            {countrie.countrie.languages.map((item =>
-                <Language key={item.languages} countrie={item}/>
+        <ul>
+            {Object.values(countrie.languages.languages).map((item =>
+                <li key={item} >{item}</li>
             ))}
-        </li>
+        </ul>
     )
 }
+
+

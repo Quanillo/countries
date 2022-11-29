@@ -46,7 +46,7 @@ function App() {
 
 const Restult = ({isInFilter}) => {
   if(isInFilter.length===1){
-    const countrie = isInFilter
+    const countrie = isInFilter[0];
     return(
     <CountrieInfo countrie={countrie} />
     )
