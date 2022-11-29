@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from "react";
 
 export const CountrieInfo = ({countrie}) => {
-
+/** 
     const [weather, setWeather] = useState([]);
 
     useEffect(() => {
@@ -13,7 +13,8 @@ export const CountrieInfo = ({countrie}) => {
         setWeather(data?.data);
         });
     }, []);
-    
+    <Weather key={weather} weather={weather} />
+    */
     return (
         <div>
             <h2>{countrie.name.official}</h2>
@@ -22,7 +23,7 @@ export const CountrieInfo = ({countrie}) => {
             <p>Languages: </p>
             <Languages languages={countrie}/>
             <p><b>Capital: </b>{countrie.capital}</p>
-            <Weather key={weather} weather={weather} />
+            
         </div>
     )
 };
