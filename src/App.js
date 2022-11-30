@@ -8,6 +8,8 @@ import { Filter } from './Components/Filter';
 function App() {
   const [ countries, setCountries ] = useState([])
   const [ filter, setFilter ] = useState('')
+  const [ weather, setWeather ] = useState({})
+  const key = process.env.REACT_APP_API_KEY
 
   useEffect(() => {
     axios
@@ -29,7 +31,7 @@ function App() {
     if(isInFilter.length===1){
       const countrie = { ...isInFilter[0] }
       return(
-      <CountrieInfo countrie={countrie} />
+      <CountrieInfo countrie={countrie} weather={weather} />
       )
     }
     else{
